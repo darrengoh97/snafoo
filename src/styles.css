@@ -987,13 +987,13 @@ header .navModal-toggle.collapsed {
     display: none;
 }
 
-.navbar-search-box.slide-exit-active {
+.mobileNavModal.slide-exit-active {
     -webkit-animation: 0.3s fadeOutUp ease;
     animation: 0.3s fadeOutUp ease;
     /*activate the GPU for compositing each page */
     -webkit-transform: translate3d(0, 0, 0);
 }
-.navbar-search-box.slide-enter-active {
+.mobileNavModal.slide-enter-active {
     -webkit-animation: 0.3s fadeInDown ease;
     animation: 0.3s fadeInDown ease;
     /*activate the GPU for compositing each page */
