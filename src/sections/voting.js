@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { mutate, trigger } from 'swr';
 
 import { format } from '../utils';
@@ -15,13 +15,6 @@ export default function Voting({snacks = []}) {
 
     const voteCurrentSnack = async (item) => {
         if (remainingVotes > 0) {
-            const updateSnacks = snacks.map((snack) => {
-                if (snack.id === item.id) {
-                    snack.votes += 1;
-                }
-                return snack;
-            })
-            mutate(CONSTANTS.GET_SNACKS_API, updateSnacks);
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -80,7 +73,11 @@ export default function Voting({snacks = []}) {
                                     {
                                         sortedSnacks.map((snack, i) =>
                                             <div className="row" key={snack.id}>
-                                                <button className={`btn vote-btn ${i % 2 === 0 ? 'darkgrey-bg' : 'grey-bg'}`} onClick={() => { voteCurrentSnack(snack)}}>
+                                                <button
+                                                    disabled={votedSnacks.some((e) => e.id === snack.id)}
+                                                    className={`btn vote-btn ${i % 2 === 0 ? 'darkgrey-bg' : 'grey-bg'}`}
+                                                    onClick={() => { voteCurrentSnack(snack)}}
+                                                >
                                                     +
                                                 </button>
                                                 <div className={`spaceEvenly-container vote-item ${i % 2 === 0 ? 'grey-bg' : 'lightgrey-bg'}`}>

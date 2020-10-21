@@ -1,8 +1,8 @@
-import React from 'react';
+import React  from 'react';
 import Card from '../components/card';
 
 export default function Stock({ snacks = [] }) {
-    const sortedSnacks = [].concat(snacks).sort((a, b) => a.product < b.product);
+    const sortedSnacks = [].concat(snacks).sort((a, b) => a.product < b.product ? -1 : 1);
 
     return (
         <div className="site-bd-section site-bd-section_geo" id="current">

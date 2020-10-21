@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const format = (str, replacer) => Object.keys(replacer).reduce((newStr, value) => newStr.replace(RegExp(`\\{${value}\\}`, 'gi'), replacer[value]), str);
 
 export const disableBodyScroll = (isDLP = false) => {
